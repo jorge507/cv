@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Jorge Luis Donado Stefani</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        /* Dimensiones exactas solicitadas (Proporción 1275x2100) */
+        .cv-container {
+            width: 1275px;
+            height: 2100px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: grid;
+            grid-template-columns: 32% 68%;
+            overflow: hidden;
+        }
+
+        /* Columna Izquierda (Barra Lateral) */
+        .sidebar {
+            background-color: #1a2536;
+            color: #ffffff;
+            padding: 50px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .photo-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .photo-container img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3a4b63;
+        }
+
+        .sidebar-section h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #00a8ff;
+            border-bottom: 1px solid #3a4b63;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #a0aec0;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .skills-list, .languages-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            font-size: 13.5px;
+            margin-bottom: 8px;
+            background: #24344d;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .languages-list li {
+            font-size: 14.5px;
+            margin-bottom: 10px;
+        }
+
+        .languages-list span {
+            color: #a0aec0;
+            font-size: 13px;
+        }
+
+        /* Columna Derecha (Contenido Principal) */
+        .main-content {
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            color: #2d3748;
+        }
+
+        .header {
+            border-bottom: 3px solid #1a2536;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a2536;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-section h2 {
+            font-size: 20px;
+            color: #1a2536;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-section h2::after {
+            content: '';
+            flex: 1;
+            margin-left: 15px;
+            height: 2px;
+            background-color: #e2e8f0;
+        }
+
+        .profile-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .job-block {
+            margin-bottom: 25px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a2536;
+        }
+
+        .job-company {
+            font-size: 14px;
+            font-weight: 600;
+            color: #00a8ff;
+            text-transform: uppercase;
+        }
+
+        .job-date {
+            font-size: 13px;
+            font-weight: 600;
+            color: #718096;
+        }
+
+        .job-responsibilities {
+            padding-left: 20px;
+        }
+
+        .job-responsibilities li {
+            font-size: 14.5px;
+            line-height: 1.5;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        .prev-jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .prev-job-card {
+            background-color: #f8fafc;
+            padding: 12px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        .prev-job-card h4 {
+            font-size: 13px;
+            color: #1a2536;
+        }
+
+        .prev-job-card p {
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .certifications-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+
+        .cert-item {
+            font-size: 13.5px;
+            color: #4a5568;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .cert-item::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: #00a8ff;
+            font-size: 10px;
+            top: 1px;
+        }
+
+        .references-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .ref-card h4 {
+            font-size: 15px;
+            color: #1a2536;
+        }
+
+        .ref-card p {
+            font-size: 13.5px;
+            color: #4a5568;
+            margin-top: 2px;
+        }
+
+        /* Optimización de impresión para guardado en PDF */
+        @media print {
+            body {
+                padding: 0;
+                background: none;
+            }
+            .cv-container {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        
+        <aside class="sidebar">
+            <div class="photo-container">
+                <img src="foto.png" alt="Jorge Luis Donado Stefani">
+            </div>
+
+            <div class="sidebar-section">
+                <h2>Contacto</h2>
+                <div class="contact-item">
+                    <strong>Correo</strong>
+                    <a href="mailto:jldonado@gmail.com">jldonado@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Teléfono</strong>
+                    <a href="tel:+50766661046">+507 6666-1046</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Ubicación</strong>
+                    Chitré, Herrera, Panamá
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h2>Idiomas</h2>
+                <ul class="languages-list">
+                    <li>Español <span>(Nativo)</span></li>
+                    <li>Inglés <span>(Profesional / Bilingüe)</span></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section" style="flex-grow: 1;">
+                <h2>Habilidades Clave</h2>
+                <ul class="skills-list">
+                    <li>Transformación Digital</li>
+                    <li>Dirección de Proyectos</li>
+                    <li>Infraestructura IT</li>
+                    <li>Redes y Servidores</li>
+                    <li>Ciberseguridad</li>
+                    <li>Automatización</li>
+                    <li>Marketing Digital</li>
+                    <li>Comunicación Institucional</li>
+                    <li>Producción Multimedia</li>
+                    <li>Adobe Creative Suite</li>
+                    <li>Desarrollo Web/Apps</li>
+                    <li>Gestión de Equipos</li>
+                    <li>Estrategia Digital</li>
+                    <li>IA para Productividad</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>JORGE LUIS DONADO STEFANI</h1>
+                <p>Director de Tecnología, Transformación Digital y Proyectos Estratégicos</p>
+            </header>
+
+            <section class="main-section">
+                <h2>Perfil Profesional</h2>
+                <p class="profile-text">
+                    Director de tecnología y proyectos estratégicos con amplia experiencia en infraestructura IT, transformación digital, ciberseguridad, automatización, comunicación institucional y plataformas digitales. Trayectoria liderando proyectos tecnológicos tanto en el sector gubernamental como en el privado, integrando innovación, estrategia digital y soluciones empresariales de alto impacto. Especializado en administración de infraestructura tecnológica, redes, servidores, automatización de plataformas, gestión de equipos multidisciplinarios y desarrollo de soluciones digitales para instituciones y empresas.
+                </p>
+            </section>
+
+            <section class="main-section">
+                <h2>Experiencia Profesional</h2>
+                
+                <div class="job-block">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">DIRECTOR DE PROYECTOS ESPECIALES</span> | 
+                            <span class="job-company">ALCALDÍA DE CHITRÉ</span>
+                        </div>
+                        <span class="job-date">2018 – ACTUALIDAD</span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li>Dirección y coordinación de proyectos estratégicos municipales y gestión de iniciativas de transformación digital.</li>
+                        <li>Supervisión de campañas de comunicación, plataformas digitales y automatización de procesos.</li>
+                        <li>Coordinación interinstitucional, logística de proyectos especiales y soporte estratégico tecnológico.</li>
+                    </ul>
+                </div>
+
+                <div class="job-block">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">IT MANAGER</span> | 
+                            <span class="job-company">ALCALDÍA DE CHITRÉ</span>
+                        </div>
+                        <span class="job-date">2015 – ACTUALIDAD</span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li>Administración integral de infraestructura tecnológica, redes corporativas y servidores.</li>
+                        <li>Implementación de soluciones digitales institucionales y aseguramiento de la continuidad operativa.</li>
+                        <li>Supervisión rigurosa de la conectividad, ciberseguridad y soporte tecnológico municipal.</li>
+                    </ul>
+                </div>
+
+                <div class="job-block">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">GERENTE GENERAL / DIRECTOR DIGITAL</span> | 
+                            <span class="job-company">MD PUBLICIDAD</span>
+                        </div>
+                        <span class="job-date">2016 – 2018</span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li>Dirección de campañas digitales, estrategias publicitarias avanzadas y branding corporativo.</li>
+                        <li>Desarrollo de aplicaciones y automatización de plataformas digitales de alta concurrencia.</li>
+                        <li>Producción multimedia avanzada y gestión estratégica de marketing digital para clientes corporativos.</li>
+                    </ul>
+                </div>
+
+                <div class="job-block">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">CTO / CONSULTOR TECNOLÓGICO / ASESOR</span> | 
+                            <span class="job-company">OVERSIGHT SOLUTIONS</span>
+                        </div>
+                        <span class="job-date">2012 – ACTUALIDAD</span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li>Dirección de proyectos tecnológicos y despliegue de soluciones robustas de ciberseguridad.</li>
+                        <li>Consultoría experta en infraestructura IT, redes empresariales y estrategias tecnológicas corporativas.</li>
+                        <li>Liderazgo en ingeniería de preventa técnica y asesoría comercial altamente especializada.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h2>Experiencia Previa</h2>
+                <div class="prev-jobs-grid">
+                    <div class="prev-job-card">
+                        <h4>GERENTE DE SISTEMAS</h4>
+                        <p>Bustamante & Bustamante</p>
+                    </div>
+                    <div class="prev-job-card">
+                        <h4>JEFE DE SOPORTE Y CALL CENTER</h4>
+                        <p>AYAYAL.COM</p>
+                    </div>
+                    <div class="prev-job-card">
+                        <h4>SOPORTE TÉCNICO CALL CENTER</h4>
+                        <p>Cable Onda</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h2>Educación</h2>
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Licenciatura en Ingeniería en Sistemas</span> — 
+                        <span class="job-company" style="text-transform:none;">Universidad Tecnológica de Panamá (UTP)</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h2>Certificaciones y Formación</h2>
+                <div class="certifications-container">
+                    <div class="cert-item">Google AI Essentials</div>
+                    <div class="cert-item">Google Project Management Professional</div>
+                    <div class="cert-item">CCNA / CompTIA A+</div>
+                    <div class="cert-item">Introducción a la Ciberseguridad — Coursera</div>
+                    <div class="cert-item">UniFi Network Specialist</div>
+                    <div class="cert-item">Administración de Redes, Servidores y Windows Server</div>
+                    <div class="cert-item">Seguridad en Dispositivos y Apps — Fund. Carlos Slim</div>
+                    <div class="cert-item">SQL Server / Adobe Creative Suite (Photoshop, Lightroom, Audition)</div>
+                </div>
+            </section>
+
+            <section class="main-section" style="margin-top: auto;">
+                <h2>Referencias Profesionales</h2>
+                <div class="references-container">
+                    <div class="ref-card">
+                        <h4>Juan Carlos Huerta</h4>
+                        <p><strong>Alcalde de Chitré</strong><br>Teléfono: 6676-9986</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>Jorge Alexander Suárez</h4>
+                        <p><strong>Gerente de Planeación y Suministro — Chevron Panamá</strong><br>Teléfono: 6450-4807</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+</html>
