@@ -16,19 +16,21 @@
             background-color: #f0f2f5;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Mejor para móviles que center */
             padding: 40px 0;
         }
 
-        /* Dimensiones exactas solicitadas (Proporción 1275x2100) */
+        /* Dimensiones adaptables */
         .cv-container {
-            width: 1275px;
-            height: 2100px;
+            width: 100%;
+            max-width: 1275px; /* Límite máximo en PC */
+            min-height: 2100px;
             background-color: #ffffff;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             display: grid;
             grid-template-columns: 32% 68%;
             overflow: hidden;
+            margin: 0 20px; /* Margen a los lados en pantallas medianas */
         }
 
         /* Columna Izquierda (Barra Lateral) */
@@ -49,6 +51,7 @@
         .photo-container img {
             width: 220px;
             height: 220px;
+            max-width: 100%; /* Evita que la imagen se salga en móviles pequeños */
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #3a4b63;
@@ -126,6 +129,7 @@
             color: #1a2536;
             letter-spacing: -0.5px;
             margin-bottom: 5px;
+            line-height: 1.2;
         }
 
         .header p {
@@ -170,6 +174,7 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 8px;
+            flex-wrap: wrap; /* Permite que la fecha baje si no hay espacio */
         }
 
         .job-title {
@@ -272,6 +277,53 @@
             .cv-container {
                 box-shadow: none;
                 page-break-inside: avoid;
+                margin: 0;
+                min-height: auto;
+            }
+        }
+
+        /* RESPONSIVE DESIGN: AJUSTES PARA MÓVILES Y TABLETS */
+        @media (max-width: 900px) {
+            body {
+                padding: 0;
+            }
+
+            .cv-container {
+                grid-template-columns: 1fr; /* Una sola columna en vez de dos */
+                margin: 0;
+                border-radius: 0;
+                min-height: auto;
+            }
+
+            .sidebar {
+                padding: 40px 25px;
+            }
+
+            .main-content {
+                padding: 40px 25px;
+            }
+
+            .header h1 {
+                font-size: 32px; /* Letra un poco más pequeña en móvil */
+            }
+
+            .prev-jobs-grid {
+                grid-template-columns: 1fr; /* Tarjetas de trabajos anteriores apiladas */
+            }
+
+            .certifications-container {
+                grid-template-columns: 1fr; /* Certificaciones en una sola lista vertical */
+            }
+
+            .references-container {
+                grid-template-columns: 1fr; /* Referencias en una sola lista vertical */
+                gap: 15px;
+            }
+
+            .job-header {
+                flex-direction: column; /* Pone la fecha debajo del título del cargo */
+                align-items: flex-start;
+                gap: 5px;
             }
         }
     </style>
